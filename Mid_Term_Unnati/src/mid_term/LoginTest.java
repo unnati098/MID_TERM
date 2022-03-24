@@ -3,7 +3,6 @@ package mid_term;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -90,7 +89,7 @@ public class LoginTest {
 				e.printStackTrace();
 				}
 		  driver.findElement(By.xpath("//button[@id=\"next-button\"]")).click();
-		  driver.findElement(By.xpath("//input[@name=\"phoneNumber\"]")).sendKeys("+1485-526-4565");
+		  driver.findElement(By.xpath("//input[@name=\"phoneNumber\"]")).sendKeys("+1485-525-4565");
 		  try {
 				Thread.sleep(1000);
 				} catch (InterruptedException e) {
@@ -99,7 +98,33 @@ public class LoginTest {
 				}
 		  driver.findElement(By.xpath("//button[@id=\"next-button\"]")).click();
 		  driver.findElement(By.xpath("//select[@id=\"relationship_type\"]//option[@data-val=\"Sibling\"]")).click();
-		  
-		  
+		  driver.findElement(By.xpath("//input[@ng-model=\"relationship.name\"]")).sendKeys("Yash");
+		  try {
+				Thread.sleep(1000);
+				} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}
+		  driver.findElement(By.xpath("//button[@id=\"next-button\"]")).click();
+		  driver.findElement(By.xpath("//input[@id=\"submit\"]")).click();
+		  try {
+				Thread.sleep(1000);
+				} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}
+		 
+    }
+    @Test (priority = 3)
+    public void Logout() {
+    	driver.findElement(By.xpath("/html[1]/body[1]/header[1]/nav[1]/div[2]/ul[1]/li[3]/a[1]")).click();
+    	 try {
+				Thread.sleep(2000);
+				} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}
+    	 driver.quit();
+    	 System.out.println("Logout Successfully!!!");
     }
 }

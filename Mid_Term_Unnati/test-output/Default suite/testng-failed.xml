@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="mid_term.LoginTest">
+      <class name="more_ways.Vegetables">
         <methods>
-          <include name="LunchBrowser"/>
-          <include name="enterdata"/>
+          <include name="f"/>
         </methods>
-      </class> <!-- mid_term.LoginTest -->
+      </class> <!-- more_ways.Vegetables -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
