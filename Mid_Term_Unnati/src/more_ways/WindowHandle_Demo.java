@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.Set; 
 import org.openqa.selenium.By; 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -14,40 +15,44 @@ public  void fhgf() throws Exception {
 
 System.setProperty("webdriver.chrome.driver","chromedriver.exe"); 
 WebDriver driver = new ChromeDriver();
-
+driver.get("https://rahulshettyacademy.com/AutomationPractice/");
 driver.manage().window().maximize();
 
-// Load the website
-driver.get("http://www.naukri.com/");
+//taking the current window
+String windowHandler = driver.getWindowHandles().iterator().next();
 
-// It will return the parent window name as a String
-String parent=driver.getWindowHandle();
-
-Set<String>s=driver.getWindowHandles();
-
-// Now iterate using Iterator
-Iterator<String> I1= s.iterator();
-
-while(I1.hasNext())
-{
-
-String child_window=I1.next();
-Thread.sleep(2000);
-
-if(!parent.equals(child_window))
-{
-	Thread.sleep(2000);
-driver.switchTo().window(child_window);
-
-System.out.println(driver.switchTo().window(child_window).getTitle());
-
-driver.close();
-}
-
-}
+//code to open new window
+WebElement openWindow = driver.findElement(By.xpath("//button[@id='openwindow']"));
+openWindow.click();
 Thread.sleep(1000);
-//switch to the parent window
-driver.switchTo().window(parent);
 
+//redirecting back to previous window from the new window 
+driver.switchTo().window(windowHandler);
+Thread.sleep(1000);
+
+//again click on the new tab from the first window
+WebElement openNewTab = driver.findElement(By.xpath("//a[@id='opentab']"));
+openNewTab.click();
+Thread.sleep(1000);
+//redirecting back to first window from new window
+driver.switchTo().window(windowHandler);
+//taking the current window
+String windowHandler1 = driver.getWindowHandles().iterator().next();
+
+//code to open new window
+WebElement openWindow1 = driver.findElement(By.xpath("//button[@id='openwindow']"));
+openWindow1.click();
+Thread.sleep(1000);
+
+//redirecting back to previous window from the new window 
+driver.switchTo().window(windowHandler1);
+Thread.sleep(1000);
+
+//again click on the new tab from the first window
+WebElement openNewTab1 = driver.findElement(By.xpath("//a[@id='opentab']"));
+openNewTab1.click();
+Thread.sleep(1000);
+//redirecting back to first window from new window
+driver.switchTo().window(windowHandler1);
 }
 }
